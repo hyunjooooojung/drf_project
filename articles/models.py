@@ -1,5 +1,6 @@
 from tkinter import CASCADE
 from django.db import models
+from django.urls import reverse
 from users.models import User
 
 # Create your models here.
@@ -15,6 +16,10 @@ class Article(models.Model):
     def __str__(self):
         return str(self.title)
     
+    def get_absolute_url(self):
+        return reverse("article_detail_view", kwargs={"pk": self.article_id})
+    
+    
 
 class Comment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -25,3 +30,4 @@ class Comment(models.Model):
     
     def __str__(self):
         return str(self.content)
+    
