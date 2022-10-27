@@ -41,7 +41,7 @@ class User(AbstractBaseUser):
         max_length=255,
         unique=True,
     )
-    followings = models.ManyToManyField('self', symmetrical=False, related_name='followers') # 서로 팔로우 하지 않아도 된다. 일방적 ok
+    followings = models.ManyToManyField('self', symmetrical=False, related_name='followers', blank=True) # 서로 팔로우 하지 않아도 된다. 일방적 ok
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)
 
