@@ -50,5 +50,4 @@ class ProfileView(APIView):
         user = get_object_or_404(User, id=user_id)
         serializer = UserProfileSerializer(user)
         
-        
         return Response(serializer.data)
